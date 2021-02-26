@@ -50,8 +50,11 @@ public class BaseTest implements IDriver {
 
         // disable Chrome Welcome screen
         if (browserName.toLowerCase().contains("chrome")) {
+            System.out.println("Start chrome browser");
             ChromeOptions cOptions = new ChromeOptions();
             cOptions.addArguments("--disable-fre");
+            cOptions.addArguments("--no-default-browser-check");
+            cOptions.addArguments("--no-first-run");
             capabilities.setCapability(ChromeOptions.CAPABILITY, cOptions);
         }
 
