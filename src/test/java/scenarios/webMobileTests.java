@@ -5,6 +5,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import setup.BaseTest;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.testng.Assert.assertFalse;
@@ -12,19 +14,14 @@ import static org.testng.Assert.assertTrue;
 
 public class webMobileTests extends BaseTest {
 
-    By searchResultsLocator = By.xpath("//*[@id=\"rso\"]/div");
-    By queryFieldLocator = By.xpath("//input[@name=\"q\"]");
-
     public void assertUrlFound(String expectedURL){
-        List<WebElement> searchResults = getDriver().findElements(By.xpath(
-                String.format("//*[@id=\"rso\"]//*[contains(text(), '%s')]", expectedURL)));
-        assertTrue(!searchResults.isEmpty(), "Results don't contain expected URL: " + expectedURL);
+
     }
 
     @DataProvider(name = "googleTestData")
     public Object[][] googleTestData() {
         return new Object[][]{
-                {"EPAM", "epam.com"}
+                {"EPAM", "www.epam.com"}
         };
     }
 
@@ -48,10 +45,9 @@ public class webMobileTests extends BaseTest {
             description = "Make sure that Google can find EPAM site",
             dataProvider = "googleTestData")
     public void googleTest(String query, String expectedURL) throws IllegalAccessException, NoSuchFieldException, InstantiationException {
-        //getPo() == null. I can't understand why, but somewhere in between setPageObject() and this getPo() po becomes null
         WebDriver driver = getDriver();
         driver.get("http://google.com"); // open Google site
-        driver.findElement(queryFieldLocator).sendKeys(query, Keys.ENTER);
+        getPo().getWelement("queryField").sendKeys(query, Keys.ENTER);
 
         // Make sure that page has been loaded completely
         new WebDriverWait(getDriver(), 60).until(
@@ -59,9 +55,13 @@ public class webMobileTests extends BaseTest {
         );
 
         //Assert search list is not empty
-        assertFalse(driver.findElements(searchResultsLocator).isEmpty(), "Search results are empty");
+        assertFalse(getPo().getWelements("searchResults").isEmpty(), "Search results are empty");
 
         //Assert that relevant url is among the found urls
-        assertUrlFound(expectedURL);
+        List<String> foundUrls = new ArrayList<>();
+        getPo().getWelements("searchResultsUrls").forEach(
+                we -> foundUrls.add(we.getText())
+        );
+        assertTrue(foundUrls.contains(expectedURL), "Results don't contain expected URL: " + expectedURL);
     }
 }
