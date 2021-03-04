@@ -30,7 +30,7 @@ public class webMobileTests extends BaseTest {
         getDriver().get("http://iana.org"); // open IANA homepage
 
         // Make sure that page has been loaded completely
-        new WebDriverWait(getDriver(), 10).until(
+        getWait().until(
                 wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
 

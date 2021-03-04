@@ -8,6 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NativePageObject {
 
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, \"action_bar\")]/android.widget.TextView")
+    WebElement title;
+
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_email")
     WebElement loginField;
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_pwd")
