@@ -1,7 +1,9 @@
 package setup;
 
 import io.appium.java_client.AppiumDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import pageObjects.PageObject;
 
@@ -14,12 +16,16 @@ public class BaseTest implements IDriver {
 
     private static AppiumDriver appiumDriver; // singleton
     IPageObject po;
+    WebDriverWait wait;
 
     @Override
     public AppiumDriver getDriver() { return appiumDriver; }
 
     public IPageObject getPo() {
         return po;
+    }
+    public WebDriverWait getWait() {
+        return wait;
     }
 
     @Parameters({"platformName","appType","deviceName","browserName","app"})
@@ -28,7 +34,7 @@ public class BaseTest implements IDriver {
         System.out.println("Before: app type - "+appType);
         setAppiumDriver(platformName, deviceName, browserName, app);
         setPageObject(appType, appiumDriver);
-
+        wait = new WebDriverWait(getDriver(), 10);
     }
 
     @AfterSuite(alwaysRun = true)
@@ -48,6 +54,16 @@ public class BaseTest implements IDriver {
         capabilities.setCapability("browserName", browserName);
         capabilities.setCapability("chromedriverDisableBuildCheck","true");
 
+        // disable Chrome Welcome screen
+        if (browserName.toLowerCase().contains("chrome")) {
+            System.out.println("Start chrome browser");
+            ChromeOptions cOptions = new ChromeOptions();
+            cOptions.addArguments("--disable-fre");
+            cOptions.addArguments("--no-default-browser-check");
+            cOptions.addArguments("--no-first-run");
+            capabilities.setCapability(ChromeOptions.CAPABILITY, cOptions);
+        }
+
         try {
             appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);
         } catch (MalformedURLException e) {
@@ -62,6 +78,4 @@ public class BaseTest implements IDriver {
     private void setPageObject(String appType, AppiumDriver appiumDriver) throws Exception {
         po = new PageObject(appType, appiumDriver);
     }
-
-
 }
