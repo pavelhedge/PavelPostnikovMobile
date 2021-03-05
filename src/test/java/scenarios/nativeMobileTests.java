@@ -1,36 +1,11 @@
 package scenarios;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import setup.BaseTest;
 import setup.IPageObject;
-import setup.PropertiesManager;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.testng.Assert.*;
-
 public class nativeMobileTests extends BaseTest {
-
-    PropertiesManager properties;
-    String mail;
-    String password;
-    String username;
-
-    @BeforeTest(alwaysRun = true)
-    public void setUpTest() {
-        properties = new PropertiesManager("src/test/resources/user.properties");
-        mail = properties.get("mail");
-        username = properties.get("username");
-        password = properties.get("password");
-    }
 
     @AfterMethod(alwaysRun = true)
     public void tearDownTest() {
@@ -44,15 +19,15 @@ public class nativeMobileTests extends BaseTest {
 
     }
 
-
     public void assertAppTitle(String title) throws NoSuchFieldException, IllegalAccessException, InstantiationException, InterruptedException{
         getWait().until(ExpectedConditions.textToBePresentInElement(
                 getPo().getWelement("title"), title));
         System.out.printf("On a %s page\n", title);
     }
 
+    @Parameters({"username","mail","password"})
     @Test(groups = {"native", "register"}, description = "Register Form Test")
-    public void registerNativeTest() throws IllegalAccessException, NoSuchFieldException, InstantiationException, InterruptedException {
+    public void registerNativeTest(String username, String mail, String password) throws IllegalAccessException, NoSuchFieldException, InstantiationException, InterruptedException {
 
         IPageObject po = getPo();
         assertAppTitle("EPAM Test App");
