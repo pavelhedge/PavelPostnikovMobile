@@ -81,7 +81,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>webCloudTNG</suite.file>
+                <suite.file>iosWebCloudTNG</suite.file>
             </properties>
         </profile>
     </profiles>
