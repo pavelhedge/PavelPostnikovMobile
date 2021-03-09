@@ -8,6 +8,10 @@
     <artifactId>mobileTaTrainingV2</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+            <token>Put your token here</token>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>io.appium</groupId>
@@ -33,7 +37,8 @@
                         <suiteXmlFile>src/test/resources/${suite.file}.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
+                        <!--ts.appium>http://localhost:4723/wd/hub</ts.appium-->
+                        <ts.appium>https://EPM-TSTF:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -54,6 +59,7 @@
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
+
             <properties>
                 <suite.file>nativeTNG</suite.file>
             </properties>
@@ -70,12 +76,12 @@
         </profile>
 
         <profile>
-            <id>check</id>
+            <id>webCloudTest</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>defaultTNG</suite.file>
+                <suite.file>webCloudTNG</suite.file>
             </properties>
         </profile>
     </profiles>
