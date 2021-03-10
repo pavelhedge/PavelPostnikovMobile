@@ -76,7 +76,7 @@
         </profile>
 
         <profile>
-            <id>webCloudTest</id>
+            <id>checkCloudTest</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
