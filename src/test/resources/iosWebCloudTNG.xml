@@ -2,7 +2,7 @@
 <suite name="Web mobile testing Suite">
     <parameter name="appType" value="web"/>
     <parameter name="udid" value="7df90ef7c1342a703e33a3470cfff84b29ed30f0"/>
-    <!--parameter name="deviceName" value="7df90ef7c1342a703e33a3470cfff84b29ed30f0"/-->
+    <!--parameter name="deviceName" value="iPhone 11 Pro Max"/-->
     <parameter name="platformName" value="iOS"/>
     <parameter name="browserName" value="Safari"/>
     <test name="Web tests">

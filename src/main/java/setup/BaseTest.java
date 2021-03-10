@@ -67,7 +67,12 @@ public class BaseTest implements IDriver {
         capabilities.setCapability("appActivity", appActivity);
 
         capabilities.setCapability("bundleId", bundleId);
-        //capabilities.setCapability("appActivity", appActivity);
+        //if (platformName.equals("iOS")) capabilities.setCapability("automationName", "XCUITest");
+
+        System.out.printf("Connecting to %s device ", platformName);
+        if (deviceName != null && !deviceName.equals("")) System.out.printf("with name \'%s\'\n", deviceName);
+        else if (udid != null && !udid.equals("")) System.out.printf("with id \'%s\'\n", udid);
+
 
 
         try {

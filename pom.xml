@@ -76,12 +76,42 @@
         </profile>
 
         <profile>
-            <id>checkCloudTest</id>
+            <id>webCloud</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>webCloudTNG</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>nativeCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>nativeCloudTNG</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosWebCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>iosWebCloudTNG</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iosNativeCloud</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>iosNativeCloudTNG</suite.file>
             </properties>
         </profile>
     </profiles>
