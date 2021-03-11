@@ -1,0 +1,14 @@
+# Default ignored files
+/shelf/
+/.idea/workspace.xml
+
+target
+e
+.idea
+debug.log
+*.iml
+
+**/.allure
+**/.logs
+
+token.txt

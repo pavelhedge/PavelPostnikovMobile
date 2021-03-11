@@ -1,9 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Web mobile testing Suite">
-    <parameter name="appType" value="web"></parameter>
+    <parameter name="execution" value="cloud"/>
+    <parameter name="appType" value="web"/>
     <!--parameter name="deviceName" value="Google Pixel 2 XL"></parameter-->
-    <parameter name="platformName" value="Android"></parameter>
-    <parameter name="browserName" value="Chrome"></parameter>
+    <parameter name="platformName" value="Android"/>
+    <parameter name="browserName" value="Chrome"/>
     <test name="Web tests">
         <groups>
             <run>

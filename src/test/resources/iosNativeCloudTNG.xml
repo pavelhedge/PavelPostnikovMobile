@@ -1,5 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Native iOS testing Suite">
+
+    <parameter name="execution" value="cloud"/>
     <parameter name="appType" value="native"/>
     <parameter name="udid" value="00008030-001115E40EE2802E"/>
     <!--parameter name="deviceName" value="iPhone 11 Pro Max"/-->
