@@ -2,6 +2,7 @@
 <suite name="Web mobile testing Suite">
     <parameter name="execution" value="cloud"/>
     <parameter name="appType" value="web"/>
+    <parameter name="udid" value="DUM0219807004565"/>
     <!--parameter name="deviceName" value="Google Pixel 2 XL"></parameter-->
     <parameter name="platformName" value="Android"/>
     <parameter name="browserName" value="Chrome"/>

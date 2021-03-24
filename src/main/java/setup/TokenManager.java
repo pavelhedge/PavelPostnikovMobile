@@ -10,8 +10,7 @@ public class TokenManager {
 
     TokenManager() {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("token.txt"));
-            token = reader.readLine();
+            token = new BufferedReader(new FileReader("token.txt")).readLine();
         } catch (IOException e) {
             e.printStackTrace();
             throw new IllegalStateException("No token provided");

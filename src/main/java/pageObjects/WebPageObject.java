@@ -16,7 +16,7 @@ public class WebPageObject {
     @FindBy(xpath = "//*[@id=\"rso\"]/div")
     List<WebElement> searchResults;
 
-    @FindBy(xpath = "//*[@id=\"rso\"]//span[contains(text(), \"www\")]")
+    @FindBy(xpath = "//*[@id=\"rso\"]//*[contains(text(), \"www\")]")
     List<WebElement> searchResultsUrls;
 
 

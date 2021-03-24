@@ -32,7 +32,7 @@ public class BaseTest implements IDriver {
         return wait;
     }
 
-    @Parameters({"execution", "platformName", "appType", "deviceName", "udid", "browserName", "app", "appPackage", "appActivity", "bundleId"})
+    @Parameters({"execution","platformName","appType","deviceName","udid","browserName","app","appPackage","appActivity","bundleId"})
     @BeforeSuite(alwaysRun = true)
     public void setUp(String execution,
                       String platformName,
@@ -62,6 +62,7 @@ public class BaseTest implements IDriver {
         //mandatory Android capabilities
         capabilities.setCapability("platformName", platformName);
         capabilities.setCapability("deviceName", deviceName);
+        capabilities.setCapability("udid", udid);
 
         if (app.endsWith(".apk")) capabilities.setCapability("app", (new File(app)).getAbsolutePath());
 

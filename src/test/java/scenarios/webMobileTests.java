@@ -41,7 +41,7 @@ public class webMobileTests extends BaseTest {
         System.out.println("Site opening done");
     }
 
-    @Test(groups = {"web", "google"},
+    @Test(groups = {"web","google"},
             description = "Make sure that Google can find EPAM site",
             dataProvider = "googleTestData")
     public void googleTest(String query, String expectedURL) throws IllegalAccessException, NoSuchFieldException, InstantiationException {

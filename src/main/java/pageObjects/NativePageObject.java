@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class NativePageObject {
 
     @AndroidFindBy(xpath = "//*[contains(@resource-id, \"action_bar\")]/android.widget.TextView")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/*")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeStaticText")
     WebElement title;
 
     @AndroidFindBy(id = "platkovsky.alexey.epamtestapp:id/login_email")
